@@ -1,0 +1,148 @@
+*
+{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+     scroll-behavior: smooth;
+    font-family: 'Poppins' ,sans-serif;
+}
+
+.fit{
+  height:600px;
+  width:100%;
+  
+}
+.carousel-item{
+  
+}
+.circ{
+height:100px;
+width:100px;
+position: relative;
+border-radius: 50%;
+background: #424242;
+padding: 20px 30px;
+margin-left: 100px;
+margin-bottom:20px;
+align-items: center;
+justify-content: center;
+}
+.circ p{
+  position: absolute;
+  color:#fff;
+  font-size: 35px;;
+}
+.tok{
+    height:auto;
+
+}
+.sos{
+    position: relative;
+    width: 100%;
+    margin:10px;
+    height:300px;
+    text-align: center;
+    justify-content: center;
+    overflow:hidden;
+}
+.sos .imgbt{
+   width:100%;
+
+    text-align: center;
+    justify-content: center;
+    transition: 0.5s;
+    
+    overflow: hidden;
+}
+.sos .imgbt .in{
+    position: absolute;
+   width:100%;
+    top:0;
+    left:0;
+
+    height:300px;
+    transition: 0.5s;
+}
+.sos .imgbt .by{
+    position: absolute;
+    width:100%;
+    height:300px;
+    top:0;
+    left:100%;
+    transition: 0.5s;
+}
+.sos:hover .imgbt .in{
+    position: absolute;
+   
+    top:0;
+    left:-100%;
+    transition: 0.5s;
+}
+.sos:hover .imgbt .by{
+    position: absolute;
+    
+    top:0;
+    left:0;
+    transition: 0.5s;
+}
+.sos .content{
+    position: absolute;
+    height:100%;
+    width:100%;
+    background: linear-gradient(#000,transparent);
+    text-align: center;
+    justify-content: center;
+}
+.sos .content h2{
+    margin:20px;
+    padding-top:50px;
+    color:#fff;
+    font-size:30px;
+}
+.sos .content p{
+    margin:25px;
+    color:#fff;
+    font-size:25px;
+}
+
+.c{
+    padding:0;
+    margin:0;
+    width:auto;
+}
+.ti{
+     
+}
+footer{
+    background: #162c3b;
+    padding:20px;
+}
+.ic i{
+    color:#fff;
+    font-size: 20px;
+    margin:5px 20px;
+}
+@media (max-width: 768px) {
+.fit{
+    height:400px;
+}
+.circ{
+height:100px;
+width:100px;
+position: relative;
+border-radius: 50%;
+background: #424242;
+padding: 20px 30px;
+margin-left: 160px;
+margin-bottom:20px;
+align-items: center;
+justify-content: center;
+}
+.circ p{
+  position: absolute;
+  color:#fff;
+  font-size: 35px;;
+}
+}
+
+

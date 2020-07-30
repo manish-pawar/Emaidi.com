@@ -1,0 +1,124 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}Profile page{% endblock title%}
+{% block body %}
+{% load static %}
+<style>
+    table tr td{
+     padding: 5px 20px;
+    }
+    table tr td p{
+        font-size: 20px;
+        color:$111;
+    }
+</style>
+{% for msg in messages %}
+<div class="container">
+        <div class="row">
+            <div class="offset-lg-2 offset-md-1 col-sm-8">
+                <div class="card-body bg-success">
+
+					<p id="messages" style="color:#fff; font-weight:100; font-size:40px;">{{msg}}</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+ {% endfor %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 marb">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{% url 'u-acc' %}" class="btn btn-block btn-outline-success">Update profile</a>
+                    <a href="{% url 'u-history' %}" class="btn btn-block btn-outline-success">See your history</a>
+                </div>
+            </div>
+        </div>
+        <div class="offset-lg-1 col-md-3 marb" >
+            <div class="card" style=" height:200px;">
+                <div class="card-header" style="background:#019933;"><p style="font-size:20px; color:white;">Your total maids was</p></div>
+                <div class="card-body text-center" style="background:#009933">
+                    <p style="font-size:30px; color:white;">{{counts}}</p>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-3 marb" >
+            <div class="card" style=" height:200px;">
+                <div class="card-header" style="background:#019933;"><p style="font-size:15px; color:white;">Total maids available in
+                    {{request.user.customer.location}}</p></div>
+                <div class="card-body text-center" style="background:#009933">
+                    <p style="font-size:29px; color:white;">{{available}}</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+
+    {% if maid == False %}
+            <div class="row">
+        <div class="offset-lg-3 offeset-md-1 col-md-6">
+        <div class="card text-center" style="height:150px; padding:30px;" ><h5>{{shown}}</h5>
+        <a href="{% url 'bai' %}" class="btn btn-block btn-outline-success">Book your First maid</a>
+        </div></div>
+        </div>
+    {% else %}
+    <div class="row">
+        {% if workers == True %}
+            <div class="offset-lg-4 offset-md-2 col-sm-4">
+                <div class="card-body bg-success">
+
+					<h2 style="color:#fff">Your last booking was expired go for new booking</h2>
+
+
+                </div>
+            </div>
+
+        {% else %}
+
+        <div class="col-md-4 marb" >
+            <div class="card">
+                <div class="card card-header"><h2>Maid pic</h2></div>
+                 <div class="card-body"><img class="img-fluid" src='{{worker.profile_pic.url}}'></div>
+
+            </div>
+        </div>
+        <div class="offset-lg-1 col-sm-7 marb">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Information of your maid</h2>
+                    <table >
+                        <tr>
+                            <td><p>Name</p></td>
+                            <td><p>{{worker.name}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Phone<p></td>
+                            <td><p>{{worker.phone}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Email</p></td>
+                            <td><p>{{worker.Email}}</p></td>
+                        </tr>
+                         <tr>
+                            <td><p>Location</p></td>
+                            <td><p>{{worker.city}},{{worker.village}}</p></td>
+                        </tr>
+
+                         <tr>
+                            <td><p>Salary </p></td>
+                            <td><p>{{worker.salary}}</p></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>{% endif %}
+    </div>{%endif%}
+</div>
+<br>
+
+{% endblock body %}

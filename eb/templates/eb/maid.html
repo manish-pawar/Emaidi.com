@@ -1,0 +1,105 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}List of maid page{% endblock title%}
+{% block body %}
+{% load static %}
+
+{% for msg in messages %}
+<br>
+
+<div class="container">
+        <div class="row">
+            <div class="offset-lg-2 offset-md-1 col-sm-8">
+                <div class="card-body bg-warning">
+
+					<p id="messages" style="color:#fff; font-weight:100; font-size:20px;">{{msg}}</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div><br>
+ {% endfor %}
+
+<div class="container">
+    <div class="bg-success text-center ">
+    <p id="message" style="color:#fff; margin:20px;"></p>
+</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body">
+                {% if maid == True%}
+                <h2>As you have maid for now you cant book any maid . But you can wishlist them.</h2>
+                {% else %}
+                <h2>Book Your maid </h2>
+                {% endif %}
+            </div><br>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for worker in workers %}
+        <div class="col-sm-4" style="margin-bottom:10px">
+            <div class="card">
+                <div class="card-header"><h3>Name:{{worker.name}}</h3></div>
+                <div class="card body">
+                    <img class="img-fluid" style="height:250px;" src='{{ worker.profile_pic.url }}'>
+
+                    <p>Salary expected:-{{worker.salary}}</p>
+                    <p>Description-{{worker.description}}</p>
+                </div>
+                <div class="card-footer">
+                    {% if maid == True %}
+
+
+                    {% if worker.id in wishlist %}
+
+                            <a  class="btn  btn-outline-primary btn-block">Wishlisted</a>
+
+                             {% else %}
+                                <a class="btn  btn-outline-warning wishbutton" id="wishlist{{worker.id}}"  href="#" data-catid="{{ worker.id }}">Add to wishlist</a>
+
+                                 <a href="/details/{{worker.id}}/" class="btn  btn-outline-success">See details</a>
+                            {% endif %}
+
+
+
+                    {% else %}
+
+                                 <a href="/details/{{worker.id}}/" class="btn  btn-outline-success">See details</a>
+                    <a href="/book/{{worker.id}}/" class="btn  btn-outline-warning">Book</a>{% endif %}
+                </div>
+            </div></div>
+             {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="row">
+            {% endif %}
+                    {% endfor %}
+
+
+    </div>
+</div>
+   {% endblock body %}
+{% block js %}
+
+<script type="text/javascript">
+      $('.wishbutton').click(function(){
+    var catid;
+    catid = $(this).attr("data-catid");
+    $.ajax(
+    {
+        type:"GET",
+        url: "/wishlist",
+        data:{
+                 wish_id: catid
+        },
+        success: function( data )
+        {
+            $( '#wishlist'+ catid ).remove();
+            $( '#message' ).text(data);
+        }
+     })
+});
+</script>
+
+
+{% endblock js %}

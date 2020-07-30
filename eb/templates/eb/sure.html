@@ -1,0 +1,19 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}Confirmation page{% endblock title%}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="offset-lg-4 col-md-4">
+            <div class="card card-body">
+                <h5>By clicking below button you will going to be a part of E-maid's maid section. After clicking
+                this you will never be able to access your customer profile.So kindly click below button only
+                if you want to work with us.All the best!!!</h5>
+            <br>
+            <a class="btn btn-block btn-outline-success" href="{% url 'worker' %}">Click to Make Maid profile</a>
+
+            </div>
+            </div>
+
+    </div>
+</div><br>
+{% endblock body %}

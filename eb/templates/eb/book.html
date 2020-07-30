@@ -1,0 +1,31 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}Confirmation page{% endblock title%}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="offset-lg-4 col-md-4">
+            <div class="card card-body">
+                <p>By clicking submit you are going to book this maid for your work </p>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <label for="period">Select the duration for Maid:</label>
+                      <select class="form-control" id="period" name="period">
+                          <option value="-1">Select duration</option>
+                        <option value="1 month">1 month</option>
+                        <option value="6 month">6 months</option>
+                        <option value="1 year">1 year</option>
+                        <option value="15 days">15 days</option>
+                        <option value="1 day trial">1 day trial</option>
+                      </select>
+                    <br>
+
+                    <button type="submit" class="btn btn-outline-primary">Book</button>
+
+                </form>
+
+            </div>
+            </div>
+
+    </div>
+</div><br>
+{% endblock body %}

@@ -1,0 +1,32 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}{{ worker.name }} details Page {% endblock title%}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card card-body">
+                <h2>Profile picture</h2>
+            <img class="img-fluid" style="height:250px;" src="{{ worker.profile_pic.url}}"></div>
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Information</h2>
+                    <p>Salary expected:-{{worker.salary}}</p>
+                    <p>Description:-{{worker.description}}</p>
+
+                    <p>Skills:-
+                        {% for i in worker.skills.all %}
+                        {{i}}, {% endfor %} </p>
+                    <p></p>
+                    <p>City :- {{worker.city}}</p>
+                    <p>Village :- {{worker.village}}</p>
+                    <p>Phone no :- {{worker.phone}}</p>
+                    <p>Email id:- {{worker.Email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

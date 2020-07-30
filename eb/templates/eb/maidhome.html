@@ -1,0 +1,97 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}Dashboard{% endblock title%}
+{% block body %}
+<style>
+    table tr td,th{
+     padding: 5px 20px;
+    }
+    table tr td p{
+        font-size: 20px;
+        color:$111;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card card-body">
+                 <a href="{% url 'maid-account' %}" class="btn btn-outline-success btn-block" >Update profile</a>
+                    <div class="card card-body">
+                <h2>Your work Experince:</h2>
+                <h2>{{exper}} days</h2>
+            </div>
+
+            </div>
+
+        </div>
+        <div class="offset-lg-1 col-md-6">
+                <div class="card card-body">
+                    <h2>Current Work info:-</h2>
+                    <table>
+                        <tr>
+                            <td><p>Name of Customer:</p></td>
+                            <td><p>{{first.customer.name}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Phone no:</p></td>
+                            <td><p>{{first.customer.phone}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Email:</p></td>
+                            <td><p>{{first.customer.Email}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Residence:</p></td>
+                            <td><p>{{first.customer.location}}</p></td>
+                        </tr>
+
+                    </table>
+                </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <div class="row">
+
+        <div class="offset-lg-1 col-md-10">
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Your History</h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="card" style="padding:20px;">
+                        <table>
+                            <tr>
+                                <th>#</th>
+                                <th>Name of customer</th>
+                                <th>Location</th>
+                                <th>Date of joining</th>
+                            </tr>
+                            {% for i in history %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{i.customer.name}}</td>
+                                    <td>{{i.customer.location}}</td>
+                                    <td>{{i.date_created}}</td>
+                                </tr>
+
+
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+{% endblock body %}

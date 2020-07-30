@@ -1,0 +1,48 @@
+{% extends 'eb/mainb.html'%}
+{% block title%}List of maid page{% endblock title%}
+{% block body %}
+{% load static %}
+
+<div class="container">
+    <div class="card card-header text-center">
+        <a href="{% url 'user-page' %}" class="btn btn-warning " style="width:200px;">&#8592; Go to home</a>
+        <h2>Your all Maid booking history is here </h2>
+    </div>
+    <hr>
+    {% for i in worker %}
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card justify-center" >
+                <h2>Profile picture</h2>
+                <img class="img-fluid" src='{{i.worker.profile_pic.url}}' style="height:200px; ">
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+            <div class="card">
+                <div class="card-body">
+                    <h2>Work details</h2>
+                <p>Name: {{i.worker.name}}</p>
+                 <P>Work started at:{{i.date_created}}</P>
+                <p>Work period: {{i.period_work}}</p>
+                    </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Maid details</h2>
+                <p>Salary : {{i.worker.salary}}</p>
+                 <P>Maid location : {{i.worker.city}},{{i.worker.village}}</P>
+                <p>Phone : {{i.worker.phone}}</p>
+                <p>Email : {{i.worker.Email}}</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    {% endfor %}
+</div>
+
+{% endblock body%}

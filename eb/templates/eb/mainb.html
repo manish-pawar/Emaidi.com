@@ -1,0 +1,111 @@
+<!doctype html>
+ <html lang="en">
+  <head>{% load static %}
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+	  <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+
+
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static '/css/css1.css'%}">
+
+
+        <style>
+            body{
+                padding-top:100px;
+                background: #e0e0d1;
+            }
+            @media only screen and (max-width: 600px){
+                 .marb{
+                  margin-bottom: 20px;
+                 }
+                }
+      </style>
+
+      </head>
+<body>
+
+    <nav id="spykar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><img src='{% static "images/silo1.jpg" %}' alt="logo" style="height:50px; width:50px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+
+            {% if user.groups.all.0.name == 'customer' %}
+
+              <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'user-page' %}">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'bai' %}">Find Maid</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'wishlist-user' %}">Wishlist</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
+                <a class="nav-link" href="{% url 'board' %}">Dashboard</a>
+              </li>
+              {% endif %}
+
+
+
+
+          </ul>
+
+        </div>
+        <div class="ml-auto">
+            <span style="color:white; font-size: 20px; margin:5px;">Hello, {{ request.user }}</span>
+            <span><a class="btn btn-warning" href="{% url 'logout' %}">Logout</a></span></div>
+      </nav>{% load static%}
+    {% block body %}
+
+   {% endblock %}
+ <footer id="contact" class="container-fluid ">
+      <div class="row">
+        <div class="col-sm-6" >
+          <div class="conte p-4">
+            <div class="row">
+              <div class="col-3"><img href="#" src='{% static "images/silo1.jpg" %}' alt="logo" style="height:100px; width:100px;">
+              </div>
+              <div class="col-8"> <p style="color:#fff">www.E-maid.com</p>
+                <p style="color:#fff">&copy;copyright 2020 </p>
+                <p ><a href="#">Back to top</a></p>
+              </div>
+            </div>
+                {% if user.groups.all.0.name == 'customer' %}
+               <a href="{% url 'surity' %}" style=" width:300px;" class="btn btn-outline-warning ">Want to work as Maid?</a>
+                {% endif %}
+           </div>
+        </div>
+        <div class=" offset-sm-2 col-sm-4 mr-auto text-center" >
+          <p style="color:#fff ; font-size: 30px;">Follow/Contact  us on</p>
+          <p class="ic"><i class="fab fa-facebook-square"></i><i class="fab fa-instagram"></i></p>
+          <p class="ic"><i class="fab fa-linkedin-in"></i><i class="fab fa-google"></i></p>
+
+        </div>
+      </div>
+      </footer>
+  </main>
+{% block js %}
+    {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+
+</html>
